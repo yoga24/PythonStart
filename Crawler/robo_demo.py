@@ -8,7 +8,7 @@ chapterList = browser.find_all('a')
 chapter97 = ''
 
 for chapter in chapterList:
-    if '099' in chapter['href']:
+    if '097' in chapter['href']:
         chapter97 = chapter#['href']
         break
 
