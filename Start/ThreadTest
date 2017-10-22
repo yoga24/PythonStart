@@ -1,0 +1,47 @@
+package com.groovy
+
+/**
+ * Created by yorga on 22-10-2017.
+ */
+
+class MyRunnable implements Runnable {
+    private int counter
+
+    MyRunnable(Integer counter) {
+        this.counter = counter
+    }
+
+    void runThread(int counter) {
+        for (int index = counter; index < counter + 10; index++) {
+            print("Thread " + counter + ":" + index)
+        }
+    }
+
+    void runThread2(int counter) {
+        print("THis is Thread2 Method for Counter - " + counter)
+    }
+
+    @Override
+    void run() {
+//        sleep(5000)
+//        println("Counter -> " + counter)
+        runThread(counter)
+        println('Thread Method Completed')
+        runThread2(counter)
+        println('Thread2 Method Completed')
+    }
+}
+
+class ThreadTest {
+
+    static void main(String[] args) {
+        def thread1 = Thread.start { new MyRunnable1(1) }
+//        def thread2 = Thread.start { new MyRunnable1(11) }
+//        def thread3 = Thread.start { new MyRunnable1(21) }
+
+        thread1.join()
+        print('Thread Joined')
+//        thread2.join()
+//        thread3.join()
+    }
+}
